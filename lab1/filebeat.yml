@@ -1,0 +1,14 @@
+filebeat.prospectors:
+- type: log
+  document_type: json
+  enabled: true
+  json.keys_under_root: true
+  json.add_error_key: true
+  paths:
+    - "/var/lib/docker/containers/**/*.log"
+output.elasticsearch:
+  hosts: ["34.221.148.65:9200"]
+  protocol: http
+  index: "logging-%{+yyyy.MM.dd}"
+setup.template.name: "logging"
+setup.template.pattern: "logging-*"
