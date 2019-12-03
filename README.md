@@ -15,7 +15,7 @@ cd lab0
 docker-compose up -d
 ~~~
 
-## 1. Lunch a logger shipper and a application
+## Lab1. Lunch a logger shipper and a application
 
 Lunch a logger shipper
 ~~~bash
@@ -34,3 +34,25 @@ docker build -t lab1-app -f Dockerfile .
 docker run lab1-app
 ~~~
 
+## Lab2. Using Docker log driver and send log to std out
+
+~~~bash
+docker run -it -p 24224:24224 \
+    -v /home/ubuntu/environment/levi-labs-docker-logging/lab2/fluentd.conf:/fluentd/etc/fluentd.conf \
+    -e FLUENTD_CONF=fluentd.conf fluent/fluentd:latest
+
+docker run --log-driver=fluentd lab1-app
+~~~
+
+## Lab3. Using Docker log driver then send log to Elasticsearch
+
+
+~~~bash
+cd lab3
+docker build -f Docker-fluentd -t my-fluentd-for-es .
+docker run -it -p 24224:24224 \
+    -v /home/ubuntu/environment/levi-labs-docker-logging/lab3/fluentd.conf:/fluentd/etc/fluentd.conf \
+    -e FLUENTD_CONF=fluentd.conf my-fluentd-for-es
+
+docker run --log-driver=fluentd lab1-app
+~~~
