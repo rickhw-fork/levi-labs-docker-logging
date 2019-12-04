@@ -7,7 +7,7 @@
 
 ## 0. Building a Elasticsearch and Kibana
 
-Lunch ES and Kibana with Docker Compose
+Launch ES and Kibana with Docker Compose
 Connect to: http://localhost:8080/app/kibana
 
 ~~~bash
@@ -19,9 +19,9 @@ docker-compose up -d
 docker build -t lds-app -f Dockerfile .
 ~~~
 
-## Lab1. Lunch a logger shipper and a application
+## Lab1. Launch a logger shipper and a application
 
-Lunch a logger shipper
+Launch a logger shipper
 
 ~~~bash
 cd lab1
@@ -42,7 +42,7 @@ docker run \
 
 ~~~
 
-lunch a application and input log in stdout
+Launch a application and input log in stdout
 
 ~~~bash
 # 1.4 run app
