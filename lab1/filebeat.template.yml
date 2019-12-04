@@ -7,7 +7,7 @@ filebeat.prospectors:
   paths:
     - "/var/lib/docker/containers/**/*.log"
 output.elasticsearch:
-  hosts: ["192.168.2.15:9200"]
+  hosts: ["ES_IP:9200"]
   protocol: http
   index: "logging-%{+yyyy.MM.dd}"
 setup.template.name: "logging"
